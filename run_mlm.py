@@ -24,8 +24,8 @@ import logging
 import math
 import os
 import sys
-from src.ModelArguments import ModelArguments
-from src.DataTrainingArguments import DataTrainingArguments
+from src.MLMModelArguments import MLMModelArguments
+from src.MLMDataTrainingArguments import MLMDataTrainingArguments
 import datasets
 import transformers
 from transformers import (
@@ -67,7 +67,7 @@ def main():
     # or by passing the --help flag tosrc this script.
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
-    parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TrainingArguments))
+    parser = HfArgumentParser((MLMModelArguments, MLMDataTrainingArguments, TrainingArguments))
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
@@ -232,4 +232,4 @@ if __name__ == '__main__':
     main()
 
 ##sample run:
-#python run_mlm.py --output_dir output_1 --train_file data/train.csv --validation_file data/test.csv --model_name_or_path distilbert-base-uncased --do_train --do_eval
+# python run_mlm.py --output_dir output_1 --train_file data/train.csv --validation_file data/test.csv --model_name_or_path distilbert-base-uncased --do_train --do_eval
