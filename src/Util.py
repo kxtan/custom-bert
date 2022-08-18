@@ -155,6 +155,8 @@ def do_tokenize(tokenizer, training_args, data_args, raw_datasets, logger):
                 load_from_cache_file=not data_args.overwrite_cache,
                 desc="Running tokenizer on dataset line_by_line",
             )
+
+            return tokenized_datasets
     else:
         # Otherwise, we tokenize every text, then concatenate them together before splitting them in smaller parts.
         # We use `return_special_tokens_mask=True` because DataCollatorForLanguageModeling (see below) is more
