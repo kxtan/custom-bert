@@ -1,4 +1,4 @@
-import unittest
+coimport unittest
 from simpletransformers.classification import ClassificationModel
 from transformers import DistilBertModel, DistilBertTokenizer
 
