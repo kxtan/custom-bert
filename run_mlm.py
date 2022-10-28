@@ -182,6 +182,8 @@ def main():
         if data_args.max_eval_samples is not None:
             max_eval_samples = min(len(eval_dataset), data_args.max_eval_samples)
             eval_dataset = eval_dataset.select(range(max_eval_samples))
+    else:
+        eval_dataset = None
 
     # Data collator
     # This will take care of randomly masking the tokens.
@@ -205,7 +207,7 @@ def main():
         if training_args.do_eval and not is_torch_tpu_available()
         else None,
     )
-
+    
     # Training
     train_eval(trainer, train_dataset, eval_dataset, training_args, data_args, logger, last_checkpoint)
 
@@ -232,4 +234,4 @@ if __name__ == '__main__':
     main()
 
 ##sample run:
-# python run_mlm.py --output_dir output_1 --train_file data/train.csv --validation_file data/test.csv --model_name_or_path distilbert-base-uncased --do_train --do_eval
+# python run_mlm.py --output_dir output_1 --train_file data/train.txt --validation_file data/test.txt --model_name_or_path bert-base-uncased --do_train --do_eval
